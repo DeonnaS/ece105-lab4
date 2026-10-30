@@ -126,11 +126,13 @@ Example: fs(x, 1.0, np.array([0.0]), np.array([2.0])) returns
 # The sum of the first len(a) terms of the Fourier series, at x
 def fs(x, a0, a, b):
     # 1. n
-    pass
+    n = np.arange(1, len(a) + 1)
+
     # 2. terms
-    pass
-    # 3. return (replace np.zeros_like(x))
-    return np.zeros_like(x)
+    terms = a * np.cos(x[:, None] * n) + b * np.sin(x[:, None] * n)
+
+    # 3. return
+    return a0 / 2 + terms.sum(axis=1)
 
 # Plot each signal (black) and its Fourier sums, N terms for each N
 def plot_fourier(signals, coefs, Ns, filename):
