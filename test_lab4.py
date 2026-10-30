@@ -71,3 +71,6 @@ hand. Ideas (pick one, or your own):
 Name it test_something, run pytest, and see it pass. Then break your
 code on purpose (change a sign in fs): does your test catch it?
 """
+def test_triangle_sine_coefficients_zero():
+    a0, a, b = coefficients(triangle, 20)
+    assert b == pytest.approx(np.zeros(20), abs=1e-10)
